@@ -103,10 +103,8 @@ No_Loss_Auction_Protocol/
 ## Smart Contract
 The contract will be deployed to Stellar Testnet.
 
-Contract ID:
-```text
-To be added after deployment
-```
+Contract ID: CBYWDUQ6CW3MI5EPQ54KKY5PBGFJZKG25SFQPGAV3MVI4XE7WWI2SDX5
+
 
 ## Frontend
 Frontend deployment link:
