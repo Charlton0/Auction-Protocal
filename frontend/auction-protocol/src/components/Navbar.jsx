@@ -8,6 +8,8 @@ function Navbar() {
       <div style={{ display: "flex", gap: "10px" }}>
         <Link to="/">Home</Link>
         <Link to="/create">Create Auction</Link>
+        <Link to="/auction">Auction Details</Link>
+        <Link to="/refund">Refund</Link>
         <button>Connect Wallet</button>
       </div>
     </nav>

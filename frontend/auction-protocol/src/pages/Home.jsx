@@ -1,40 +1,26 @@
-import Navbar from "../components/Navbar";
-import AuctionCard from "../components/AuctionCard";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <>
-      <Navbar />
+    <div style={{ padding: "2rem" }}>
+      <h1>No Loss Auction Protocol</h1>
 
-      <div className="container">
-        <header className="hero">
-          <h1>No-Loss Auction Protocol</h1>
+      <p>
+        Create auctions, place bids and claim refunds on Stellar Soroban.
+      </p>
 
-          <p>
-            Bid on items without losing your funds.
-          </p>
-        </header>
-
-        <section className="auctions">
-          <h2>Featured Auctions</h2>
-
-          <AuctionCard
-            title="Gaming Laptop"
-            bid="100"
-          />
-
-          <AuctionCard
-            title="iPhone 15"
-            bid="75"
-          />
-
-          <AuctionCard
-            title="Smart TV"
-            bid="120"
-          />
-        </section>
+      <div style={{ marginTop: "20px" }}>
+        <Link to="/create">
+          <button>Create Auction</button>
+        </Link>
       </div>
-    </>
+
+      <div style={{ marginTop: "20px" }}>
+        <Link to="/auction">
+          <button>View Auction</button>
+        </Link>
+      </div>
+    </div>
   );
 }
 

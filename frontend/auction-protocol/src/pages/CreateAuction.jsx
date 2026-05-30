@@ -1,23 +1,28 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { createAuction } from "../services/soroban";
 
 function CreateAuction() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startingBid, setStartingBid] = useState("");
+  const [deadline, setDeadline] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const auctionData = {
       title,
       description,
       startingBid,
+      deadline,
     };
 
-    console.log("Auction Created:", auctionData);
+    console.log("Creating Auction:", auctionData);
 
-    alert("Auction created (frontend only for now)");
+    await createAuction(auctionData);
+
+    alert("Auction submitted");
   };
 
   return (
@@ -25,31 +30,52 @@ function CreateAuction() {
       <Navbar />
 
       <div className="container">
-        <h2>Create Auction</h2>
+        <div className="card">
+          <h2>Create New Auction</h2>
 
-        <form onSubmit={handleSubmit} className="form">
-          <input
-            type="text"
-            placeholder="Item title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <form onSubmit={handleSubmit} className="form">
 
-          <textarea
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+            <label>Item Name</label>
+            <input
+              type="text"
+              placeholder="Gaming Laptop"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
 
-          <input
-            type="number"
-            placeholder="Starting bid (XLM)"
-            value={startingBid}
-            onChange={(e) => setStartingBid(e.target.value)}
-          />
+            <label>Description</label>
+            <textarea
+              rows="5"
+              placeholder="Describe your item..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
 
-          <button type="submit">Create Auction</button>
-        </form>
+            <label>Starting Price</label>
+            <input
+              type="number"
+              placeholder="100"
+              value={startingBid}
+              onChange={(e) => setStartingBid(e.target.value)}
+              required
+            />
+
+            <label>Auction Deadline</label>
+            <input
+              type="datetime-local"
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
+              required
+            />
+
+            <button type="submit">
+              Create Auction
+            </button>
+
+          </form>
+        </div>
       </div>
     </>
   );
